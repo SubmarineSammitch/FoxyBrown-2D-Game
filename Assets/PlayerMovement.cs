@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour {
 	public CharacterController2D controller;
     public Animator animator;
 
+
 	public float runSpeed = 40f;
 
 	float horizontalMove = 0f;
@@ -45,10 +46,16 @@ public class PlayerMovement : MonoBehaviour {
     {
         animator.SetBool("IsCrouching", IsCrouching);
     }
-	void FixedUpdate ()
-	{
-		// Move our character
-		controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
-		jump = false;
-	}
-}
+    public void OnClimbing(bool IsClimbing)
+    {
+        animator.SetBool("IsClimbing", IsClimbing);
+    }
+
+    void FixedUpdate()
+    {
+        // Move our character
+        controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
+        jump = false;
+    }
+
+    }

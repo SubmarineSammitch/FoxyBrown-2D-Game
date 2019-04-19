@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class LadderScript : MonoBehaviour
 {
-    public float Speed = 5f;
+
+    private CharacterController2D thePlayer;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        thePlayer = FindObjectOfType<CharacterController2D>();
     }
 
     // Update is called once per frame
@@ -20,18 +22,20 @@ public class LadderScript : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
 
-        if (other.gameObject.CompareTag("Player") && Input.GetKey(KeyCode.S))
+        if(other.name == "Player")
         {
-            other.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -Speed);
-            Debug.Log("Going down the ladder");
+            thePlayer.onLadder = true;
         }
-        else if (other.gameObject.CompareTag("Player") && Input.GetKey(KeyCode.W))
+
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+
+        if (other.name == "Player")
         {
-            other.GetComponent<Rigidbody2D>().velocity = new Vector2(0, Speed);
-            Debug.Log("Going up the ladder");
+            thePlayer.onLadder = false;
         }
-        else
-            other.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
 
     }
 }
