@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour {
 	float horizontalMove = 0f;
 	bool jump = false;
 	bool crouch = false;
+    private bool climbing = false;
 	
 	// Update is called once per frame
 	void Update () {
@@ -27,14 +28,21 @@ public class PlayerMovement : MonoBehaviour {
             animator.SetBool("IsJumping", true);
 		}
 
-		if (Input.GetButtonDown("Crouch"))
+		if (Input.GetButtonDown("Crouch") && !climbing)
 		{
 			crouch = true;
-		} else if (Input.GetButtonUp("Crouch"))
+		}
+        else if (Input.GetButtonUp("Crouch"))
 		{
 			crouch = false;
 		}
-
+        if( Input.GetButtonDown("Crouch") && climbing == true)
+        {
+            Debug.Log("PlayerMovement: If in Update");
+            crouch = false;
+            animator.SetBool("IsClimbing", true);
+        }
+        
 	}
 
     public void OnLanding()
@@ -48,6 +56,7 @@ public class PlayerMovement : MonoBehaviour {
     }
     public void OnClimbing(bool IsClimbing)
     {
+        climbing = IsClimbing;
         animator.SetBool("IsClimbing", IsClimbing);
     }
 

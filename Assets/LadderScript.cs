@@ -6,6 +6,7 @@ public class LadderScript : MonoBehaviour
 {
 
     private CharacterController2D thePlayer;
+    private PlayerMovement animationClimb;
 
     // Start is called before the first frame update
     void Start()
