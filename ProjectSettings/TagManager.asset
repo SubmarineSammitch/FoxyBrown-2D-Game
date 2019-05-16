@@ -8,7 +8,6 @@ TagManager:
   - PickUp
   - Enemy
   - Health
-  - Ladder
   layers:
   - Default
   - TransparentFX
@@ -20,8 +19,8 @@ TagManager:
   - 
   - Player
   - Obstacle
-  - Ladder
-  - Collecables
+  - 
+  - 
   - 
   - 
   - 
