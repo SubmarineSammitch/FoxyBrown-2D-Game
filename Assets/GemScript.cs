@@ -28,7 +28,7 @@ public class GemScript : MonoBehaviour
         {
             CharControl.AddGems(m_GemValue);
             //other.gameObject.SetActive(false);
-            this.gameObject.SetActive(false);
+            Destroy(this.gameObject);
         }
     }
 

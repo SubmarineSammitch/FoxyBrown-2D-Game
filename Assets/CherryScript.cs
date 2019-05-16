@@ -28,7 +28,7 @@ public class CherryScript : MonoBehaviour
         {
             CharControl.AddGems(m_CherryValue);
             //other.gameObject.SetActive(false);
-            this.gameObject.SetActive(false);
+            Destroy(this.gameObject);
 
             CharacterController2D.health += 1;
         }
